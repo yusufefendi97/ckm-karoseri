@@ -12,12 +12,15 @@
     header p { color: #aaa; }
     .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
     .card { background: white; border-radius: 8px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    h2 { color: #1a1a2e; margin: 25px 0 10px; font-size: 1.2rem; }
+    h2 { color: #1a1a2e; margin: 28px 0 10px; font-size: 1.15rem; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+    h2:first-of-type { margin-top: 10px; }
     p, li { line-height: 1.8; color: #555; margin-bottom: 10px; }
-    ul { padding-left: 20px; }
+    ul { padding-left: 20px; margin-bottom: 10px; }
     nav { text-align: center; margin: 20px 0; }
     nav a { margin: 0 15px; color: #1a1a2e; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
     footer { text-align: center; padding: 20px; color: #aaa; font-size: 0.85rem; }
+    .notice { background: #eef7ff; border-left: 4px solid #1a1a2e; padding: 12px 18px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.95rem; color: #444; }
   </style>
 </head>
 <body>
@@ -31,31 +34,79 @@
   </nav>
   <div class="container">
     <div class="card">
-      <p><strong>Last updated:</strong> February 27, 2025</p>
+      <p><strong>Last updated:</strong> February 27, 2026</p>
 
       <h2>1. Overview</h2>
-      <p>This Privacy Policy describes how the CKM Karoseri TikTok Content Tool ("Application") handles information. This is a private desktop application used solely by the owner of CKM Karoseri.</p>
+      <p>This Privacy Policy explains how the CKM Karoseri TikTok Content Tool ("Application", "we", "our") handles information in connection with your use of the Application. This is a private desktop tool that connects to TikTok's official Content Posting API solely to publish video content on behalf of the authenticated account owner.</p>
+      <p>We are committed to protecting your privacy. This policy describes what information is handled, how it is used, and the rights available to you.</p>
 
-      <h2>2. Data We Do NOT Collect</h2>
+      <h2>2. Information We Handle</h2>
+      <p>The Application handles only the minimum data necessary to function:</p>
       <ul>
-        <li>We do not collect personal data from any third party</li>
-        <li>We do not store user credentials beyond the local device</li>
-        <li>We do not share any data with external services other than TikTok's official API</li>
-        <li>We do not use cookies or tracking technologies</li>
+        <li><strong>TikTok OAuth Access Token &amp; Refresh Token</strong> — Obtained after the user completes TikTok's official login flow. Stored locally on the user's device only.</li>
+        <li><strong>TikTok Open ID</strong> — A unique identifier provided by TikTok to identify the authenticated account. Used only to verify the correct account is being posted to.</li>
+        <li><strong>Video files</strong> — Original video files selected by the user from their local device. These are uploaded directly to TikTok via the official API and are not stored or transmitted elsewhere.</li>
+      </ul>
+      <div class="notice">We do NOT collect names, email addresses, passwords, payment information, location data, or any behavioral/analytics data.</div>
+
+      <h2>3. How We Use Information</h2>
+      <p>All data handled by the Application is used exclusively for the following purposes:</p>
+      <ul>
+        <li>Authenticating with TikTok's API on your behalf using your authorized access token</li>
+        <li>Verifying that content is published to the correct authorized TikTok account</li>
+        <li>Uploading user-selected video content to TikTok via the Content Posting API</li>
+      </ul>
+      <p>We do not use your information for advertising, profiling, analytics, or any purpose beyond the core functionality described above.</p>
+
+      <h2>4. Local Data Storage</h2>
+      <p>All data (access tokens, account configuration) is stored locally on the user's own device in a configuration file. No cloud storage, external database, or remote server is used. The Application does not transmit any data to servers operated by CKM Karoseri.</p>
+
+      <h2>5. Data Security</h2>
+      <p>We implement the following measures to protect your data:</p>
+      <ul>
+        <li>Tokens are stored in a local configuration file accessible only to the operating system user running the application</li>
+        <li>All communication with TikTok's API is performed over HTTPS (TLS-encrypted connections)</li>
+        <li>No sensitive data is logged to log files</li>
+        <li>The Application does not transmit credentials to any third-party service</li>
       </ul>
 
-      <h2>3. TikTok API Usage</h2>
-      <p>This application uses TikTok's official Content Posting API solely to upload video content on behalf of the authenticated account owner. Access tokens are stored locally on the owner's device and are never transmitted to any third-party server.</p>
+      <h2>6. Third-Party Services</h2>
+      <p>The Application integrates solely with the <strong>TikTok API</strong> (operated by TikTok Technology Limited and affiliates). Data transmitted to TikTok is governed by TikTok's own Privacy Policy, available at <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" rel="noopener">tiktok.com/legal/privacy-policy</a>.</p>
+      <p>We do not integrate with, sell data to, or share data with any other third parties.</p>
 
-      <h2>4. Data Storage</h2>
-      <p>All data (access tokens, account settings) is stored locally on the user's device. No cloud storage or external database is used.</p>
+      <h2>7. Data Retention &amp; Deletion</h2>
+      <p>Access tokens and account configuration are retained locally on the user's device for as long as the Application is in use. You may delete this data at any time by:</p>
+      <ul>
+        <li>Removing your account from the Application (which deletes the stored tokens from the configuration file)</li>
+        <li>Revoking the Application's access directly from your TikTok account settings at <a href="https://www.tiktok.com/setting" target="_blank" rel="noopener">tiktok.com/setting</a> under Manage app permissions</li>
+        <li>Manually deleting the Application's configuration files from your device</li>
+      </ul>
+      <p>Upon revoking access or removing the account, all locally stored tokens are deleted and the Application can no longer interact with your TikTok account.</p>
 
-      <h2>5. Contact</h2>
-      <p>For any questions regarding this privacy policy, contact: yusuf.ef18@gmail.com</p>
+      <h2>8. Your Rights</h2>
+      <p>As a user of this Application, you have full control over your data:</p>
+      <ul>
+        <li><strong>Access:</strong> You can view all stored data by inspecting the local configuration file on your device</li>
+        <li><strong>Deletion:</strong> You can delete all stored data at any time as described in Section 7</li>
+        <li><strong>Revocation:</strong> You can revoke TikTok API access at any time from your TikTok account settings</li>
+        <li><strong>Correction:</strong> You can re-authenticate at any time to update your account credentials</li>
+      </ul>
+
+      <h2>9. Children's Privacy</h2>
+      <p>This Application is intended for use by adults (18 years and older) who own and operate TikTok business or creator accounts. We do not knowingly collect or process any information from individuals under the age of 13. If you believe a minor has inadvertently used this Application, please contact us immediately at the address below.</p>
+
+      <h2>10. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes in the Application or applicable regulations. When we do, we will update the "Last updated" date at the top of this page. Continued use of the Application after any changes constitutes acceptance of the updated policy. We encourage you to review this policy periodically.</p>
+
+      <h2>11. Contact Us</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your data, please contact us:</p>
+      <p><strong>Email:</strong> yusuf.ef18@gmail.com</p>
+      <p><strong>Application:</strong> CKM Karoseri TikTok Content Tool</p>
+      <p><strong>Developer:</strong> CKM Karoseri</p>
     </div>
   </div>
   <footer>
-    <p>&copy; 2025 CKM Karoseri. All rights reserved.</p>
+    <p>&copy; 2026 CKM Karoseri. All rights reserved.</p>
   </footer>
 </body>
 </html>
