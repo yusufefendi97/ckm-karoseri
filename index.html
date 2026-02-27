@@ -13,34 +13,82 @@
     .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
     .card { background: white; border-radius: 8px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     .card h2 { margin-bottom: 15px; color: #1a1a2e; }
-    .card p { line-height: 1.7; color: #555; }
+    .card p { line-height: 1.7; color: #555; margin-bottom: 10px; }
+    ul { padding-left: 20px; }
+    ul li { line-height: 1.8; color: #555; margin-bottom: 6px; }
+    .badge { display: inline-block; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; padding: 3px 10px; font-size: 0.85rem; margin: 3px; color: #444; font-family: monospace; }
+    .highlight { background: #eef7ff; border-left: 4px solid #1a1a2e; padding: 15px 20px; border-radius: 0 6px 6px 0; margin: 10px 0; }
     nav { text-align: center; margin: 20px 0; }
     nav a { margin: 0 15px; color: #1a1a2e; text-decoration: none; font-weight: bold; }
     nav a:hover { text-decoration: underline; }
     footer { text-align: center; padding: 20px; color: #aaa; font-size: 0.85rem; }
+    .contact-box { background: #f9f9f9; border: 1px solid #eee; border-radius: 6px; padding: 15px 20px; }
   </style>
 </head>
 <body>
   <header>
     <h1>CKM Karoseri</h1>
-    <p>TikTok Content Management Tool</p>
+    <p>TikTok Content Publishing Tool</p>
   </header>
   <nav>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="terms-of-service.html">Terms of Service</a>
   </nav>
   <div class="container">
+
     <div class="card">
       <h2>About This Application</h2>
-      <p>CKM Karoseri TikTok Content Tool is a private desktop application used exclusively by CKM Karoseri to automate video uploads to TikTok via the official TikTok Content Posting API. This tool helps manage and schedule karoseri car modification video content for our TikTok business account.</p>
+      <p>CKM Karoseri TikTok Content Tool is a private desktop application designed to help creators automate the publishing of their original video content to TikTok securely and efficiently.</p>
+      <p>The tool connects to TikTok's official Content Posting API using the standard OAuth 2.0 authentication flow, ensuring all actions are fully authorized by the account owner. No credentials or personal data are ever transmitted to any third-party server.</p>
     </div>
+
     <div class="card">
       <h2>How It Works</h2>
-      <p>The application authenticates with TikTok using OAuth 2.0, then allows the account owner to upload videos directly from local storage to TikTok. No data is shared with third parties. The tool is not distributed publicly and is used solely for internal content management.</p>
+      <div class="highlight">
+        <strong>Step 1 — Authenticate:</strong> The user logs in via TikTok's official OAuth 2.0 flow to grant the application permission to post on their behalf.
+      </div>
+      <div class="highlight">
+        <strong>Step 2 — Select Content:</strong> The user selects original video files from their local device directory.
+      </div>
+      <div class="highlight">
+        <strong>Step 3 — Publish:</strong> The application uploads the video directly to the user's TikTok account using the Content Posting API. All posts are user-initiated.
+      </div>
     </div>
+
+    <div class="card">
+      <h2>API Scopes &amp; Permissions</h2>
+      <p>This application requests only the minimum permissions necessary to function:</p>
+      <ul>
+        <li><span class="badge">user.info.basic</span> — Used to verify the authenticated TikTok profile and ensure content is published to the correct account.</li>
+        <li><span class="badge">video.publish</span> — Used to upload and publish original video content from the user's local device to their TikTok account.</li>
+      </ul>
+      <p style="margin-top:12px;">No other scopes or permissions are requested. The application does not read, modify, or delete existing TikTok content.</p>
+    </div>
+
+    <div class="card">
+      <h2>Security &amp; Privacy</h2>
+      <ul>
+        <li>All authentication is handled directly by TikTok's official OAuth 2.0 system</li>
+        <li>Access tokens are stored locally on the user's own device only</li>
+        <li>No user data, videos, or credentials are transmitted to any third-party server</li>
+        <li>The application does not collect analytics or usage data</li>
+        <li>Only original content owned by the user is published</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Support &amp; Contact</h2>
+      <div class="contact-box">
+        <p>For questions, support, or data-related inquiries, please contact:</p>
+        <p style="margin-top:8px;"><strong>Email:</strong> yusuf.ef18@gmail.com</p>
+        <p><strong>Application:</strong> CKM Karoseri TikTok Content Tool</p>
+        <p><strong>Developer:</strong> CKM Karoseri</p>
+      </div>
+    </div>
+
   </div>
   <footer>
-    <p>&copy; 2025 CKM Karoseri. All rights reserved.</p>
+    <p>&copy; 2026 CKM Karoseri. All rights reserved.</p>
   </footer>
 </body>
 </html>
