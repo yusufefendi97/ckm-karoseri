@@ -3,55 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CKM Karoseri - Content Publisher</title>
+  <title>MLBB Highlight Uploader</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; }
-    header { background: #1a1a2e; color: white; padding: 40px 20px; text-align: center; }
-    header h1 { font-size: 2rem; margin-bottom: 10px; }
-    header p { color: #aaa; }
-    .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-    .card { background: white; border-radius: 8px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .card h2 { margin-bottom: 15px; color: #1a1a2e; }
-    .card p { line-height: 1.7; color: #555; margin-bottom: 10px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #0d0d1a; color: #e0e0e0; }
+
+    header {
+      background: linear-gradient(135deg, #1a0533 0%, #0d0d1a 60%);
+      border-bottom: 2px solid #6c3fc5;
+      padding: 50px 20px 40px;
+      text-align: center;
+    }
+    header .logo { font-size: 2.4rem; font-weight: 800; color: #fff; letter-spacing: 1px; }
+    header .logo span { color: #a855f7; }
+    header p { color: #aaa; margin-top: 10px; font-size: 1rem; }
+
+    nav { text-align: center; padding: 14px; background: #12122a; border-bottom: 1px solid #2a2a4a; }
+    nav a { color: #a855f7; text-decoration: none; margin: 0 18px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px; }
+    nav a:hover { color: #d8b4fe; }
+
+    .container { max-width: 820px; margin: 50px auto; padding: 0 20px; }
+
+    .card {
+      background: #12122a;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+    .card h2 { color: #a855f7; margin-bottom: 14px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+    .card p { line-height: 1.8; color: #bbb; margin-bottom: 10px; }
     ul { padding-left: 20px; }
-    ul li { line-height: 1.8; color: #555; margin-bottom: 6px; }
-    .badge { display: inline-block; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; padding: 3px 10px; font-size: 0.85rem; margin: 3px; color: #444; font-family: monospace; }
-    .highlight { background: #eef7ff; border-left: 4px solid #1a1a2e; padding: 15px 20px; border-radius: 0 6px 6px 0; margin: 10px 0; }
-    nav { text-align: center; margin: 20px 0; }
-    nav a { margin: 0 15px; color: #1a1a2e; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 20px; color: #aaa; font-size: 0.85rem; }
-    .contact-box { background: #f9f9f9; border: 1px solid #eee; border-radius: 6px; padding: 15px 20px; }
+    ul li { line-height: 1.9; color: #bbb; }
+
+    .highlight {
+      border-left: 3px solid #a855f7;
+      padding: 12px 18px;
+      background: #1a1a3a;
+      border-radius: 0 6px 6px 0;
+      margin: 10px 0;
+    }
+    .highlight strong { color: #d8b4fe; }
+
+    .badge {
+      display: inline-block;
+      background: #1e1e3a;
+      border: 1px solid #6c3fc5;
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 0.82rem;
+      margin: 3px;
+      color: #c4b5fd;
+      font-family: monospace;
+    }
+
+    .contact-box {
+      background: #1a1a3a;
+      border: 1px solid #2a2a4a;
+      border-radius: 6px;
+      padding: 16px 20px;
+    }
+    .contact-box p { margin-bottom: 6px; }
+    .contact-box strong { color: #d8b4fe; }
+
+    footer { text-align: center; padding: 30px 20px; color: #555; font-size: 0.82rem; border-top: 1px solid #1e1e3a; }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>CKM Karoseri</h1>
-    <p>Content Publishing Tool</p>
+    <div class="logo">MLBB <span>Highlight</span> Uploader</div>
+    <p>Automated TikTok Content Publisher for Mobile Legends Pro Players</p>
   </header>
+
   <nav>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="terms-of-service.html">Terms of Service</a>
   </nav>
+
   <div class="container">
 
     <div class="card">
       <h2>About This Application</h2>
-      <p>CKM Karoseri Content Publisher is a private desktop application designed to help creators automate the publishing of their original video content to TikTok securely and efficiently.</p>
-      <p>The tool connects to TikTok's official Content Posting API using the standard OAuth 2.0 authentication flow, ensuring all actions are fully authorized by the account owner. No credentials or personal data are ever transmitted to any third-party server.</p>
+      <p>MLBB Highlight Uploader is a private desktop application designed to help Mobile Legends: Bang Bang content creators and pro players automatically publish their gameplay highlight videos to TikTok.</p>
+      <p>The tool connects to TikTok's official Content Posting API using the standard OAuth 2.0 authentication flow. All publishing actions are fully authorized by the account owner. No credentials or personal data are ever transmitted to any third-party server.</p>
     </div>
 
     <div class="card">
       <h2>How It Works</h2>
       <div class="highlight">
-        <strong>Step 1 — Authenticate:</strong> The user logs in via TikTok's official OAuth 2.0 flow to grant the application permission to post on their behalf.
+        <strong>Step 1 — Connect Account:</strong> Log in via TikTok's official OAuth 2.0 flow to grant the application permission to publish on your behalf.
       </div>
       <div class="highlight">
-        <strong>Step 2 — Select Content:</strong> The user selects original video files from their local device directory.
+        <strong>Step 2 — Select Highlights:</strong> Choose Mobile Legends gameplay video files from your local device to queue for publishing.
       </div>
       <div class="highlight">
-        <strong>Step 3 — Publish:</strong> The application uploads the video directly to the user's TikTok account using the Content Posting API. All posts are user-initiated.
+        <strong>Step 3 — Schedule & Publish:</strong> Set a publish schedule or upload immediately. The application handles the rest using TikTok's Content Posting API.
       </div>
     </div>
 
@@ -59,10 +106,10 @@
       <h2>API Scopes &amp; Permissions</h2>
       <p>This application requests only the minimum permissions necessary to function:</p>
       <ul>
-        <li><span class="badge">user.info.basic</span> — Used to verify the authenticated TikTok profile and ensure content is published to the correct account.</li>
-        <li><span class="badge">video.publish</span> — Used to upload and publish original video content from the user's local device to their TikTok account.</li>
+        <li><span class="badge">user.info.basic</span> — Verify the authenticated TikTok profile to ensure content is published to the correct account.</li>
+        <li><span class="badge">video.publish</span> — Upload and publish gameplay highlight videos from the user's local device to their TikTok account.</li>
       </ul>
-      <p style="margin-top:12px;">No other scopes or permissions are requested. The application does not read, modify, or delete existing TikTok content.</p>
+      <p style="margin-top:14px;">No other scopes or permissions are requested. The application does not read, modify, or delete existing TikTok content.</p>
     </div>
 
     <div class="card">
@@ -80,15 +127,17 @@
       <h2>Support &amp; Contact</h2>
       <div class="contact-box">
         <p>For questions, support, or data-related inquiries, please contact:</p>
-        <p style="margin-top:8px;"><strong>Email:</strong> yusuf.ef18@gmail.com</p>
-        <p><strong>Application:</strong> CKM Karoseri Content Publisher</p>
-        <p><strong>Developer:</strong> CKM Karoseri</p>
+        <p style="margin-top:10px;"><strong>Email:</strong> yusuf.ef18@gmail.com</p>
+        <p><strong>Application:</strong> MLBB Highlight Uploader</p>
+        <p><strong>Developer:</strong> Fend Network</p>
       </div>
     </div>
 
   </div>
+
   <footer>
-    <p>&copy; 2026 CKM Karoseri. All rights reserved.</p>
+    <p>&copy; 2026 Fend Network. All rights reserved.</p>
   </footer>
+
 </body>
 </html>

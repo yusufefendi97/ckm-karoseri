@@ -3,70 +3,157 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CKM Karoseri - Authenticating...</title>
+  <title>MLBB Highlight Uploader – Authenticating...</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-    .card { background: white; border-radius: 8px; padding: 40px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    h1 { color: #1a1a2e; margin-bottom: 10px; font-size: 1.5rem; }
-    p { color: #555; line-height: 1.7; margin-bottom: 12px; }
-    .spinner { width: 40px; height: 40px; border: 4px solid #eee; border-top: 4px solid #1a1a2e; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 20px auto; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0d0d1a;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #12122a;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      padding: 48px 40px;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(168, 85, 247, 0.08);
+    }
+    .logo { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .logo span { color: #a855f7; }
+    h2 { color: #d8b4fe; margin: 20px 0 10px; font-size: 1.1rem; }
+    p { color: #aaa; line-height: 1.7; font-size: 0.92rem; margin-bottom: 10px; }
+
+    .spinner {
+      width: 44px; height: 44px;
+      border: 4px solid #2a2a4a;
+      border-top: 4px solid #a855f7;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 24px auto;
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .error { color: #c0392b; background: #fdecea; border-radius: 6px; padding: 12px; margin-top: 16px; display: none; }
-    .code-box { background: #f0f0f0; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin: 12px 0; display: none; }
-    .note { font-size: 0.8rem; color: #aaa; }
+
+    .success-icon { font-size: 2.5rem; margin: 20px 0; display: none; }
+    .error-box {
+      color: #f87171;
+      background: #2a1a1a;
+      border: 1px solid #7f1d1d;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-top: 16px;
+      font-size: 0.88rem;
+      display: none;
+      text-align: left;
+    }
+    .code-box {
+      background: #1a1a3a;
+      border: 1px solid #6c3fc5;
+      border-radius: 6px;
+      padding: 14px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      word-break: break-all;
+      color: #c4b5fd;
+      margin: 14px 0;
+      display: none;
+      text-align: left;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 24px;
+      background: #a855f7;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: none;
+    }
+    .btn:hover { background: #9333ea; }
+    .note { font-size: 0.78rem; color: #555; margin-top: 18px; }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>CKM Karoseri</h1>
-    <p id="status">Menyelesaikan autentikasi, harap tunggu...</p>
+    <div class="logo">MLBB <span>Highlight</span> Uploader</div>
+
     <div class="spinner" id="spinner"></div>
-    <div class="error" id="error-box"></div>
+    <div class="success-icon" id="success-icon">&#10003;</div>
+
+    <h2 id="title">Menyelesaikan autentikasi...</h2>
+    <p id="status">Harap tunggu, sedang menghubungkan ke aplikasi.</p>
+
+    <div class="error-box" id="error-box"></div>
     <div class="code-box" id="code-box"></div>
-    <p class="note" id="note" style="display:none;">Anda dapat menutup tab ini setelah aplikasi terbuka kembali.</p>
+
+    <button class="btn" id="copy-btn" onclick="copyCode()">Salin Kode</button>
+    <p class="note" id="note"></p>
   </div>
 
   <script>
-    const LOCAL_PORT = 8765; // Sesuaikan dengan port yang dipakai app kamu
+    const LOCAL_PORT = 8765;
 
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-    const state = params.get('state');
-    const error = params.get('error');
-    const errorDesc = params.get('error_description');
+    const params  = new URLSearchParams(window.location.search);
+    const code    = params.get('code');
+    const state   = params.get('state');
+    const error   = params.get('error');
+    const errDesc = params.get('error_description');
 
-    if (error) {
+    function showError(msg) {
       document.getElementById('spinner').style.display = 'none';
-      document.getElementById('status').textContent = 'Autentikasi gagal.';
+      document.getElementById('title').textContent = 'Autentikasi Gagal';
+      document.getElementById('status').textContent = '';
       const box = document.getElementById('error-box');
       box.style.display = 'block';
-      box.textContent = errorDesc || error;
+      box.textContent = msg;
+    }
+
+    function copyCode() {
+      const raw = document.getElementById('code-box').dataset.code || '';
+      navigator.clipboard.writeText(raw).then(() => {
+        document.getElementById('copy-btn').textContent = 'Tersalin!';
+        setTimeout(() => { document.getElementById('copy-btn').textContent = 'Salin Kode'; }, 2000);
+      });
+    }
+
+    if (error) {
+      showError(errDesc || error);
+
     } else if (code) {
-      // Forward ke local app
-      const localUrl = `http://localhost:${LOCAL_PORT}/callback?code=${encodeURIComponent(code)}${state ? '&state=' + encodeURIComponent(state) : ''}`;
+      // Redirect to local app
+      const localUrl = `http://localhost:${LOCAL_PORT}/callback?code=${encodeURIComponent(code)}` +
+                       (state ? `&state=${encodeURIComponent(state)}` : '');
 
-      setTimeout(() => {
-        window.location.href = localUrl;
-      }, 800);
+      window.location.href = localUrl;
 
-      // Fallback jika local app tidak merespons
+      // Fallback: local app not running
       setTimeout(() => {
         document.getElementById('spinner').style.display = 'none';
-        document.getElementById('status').textContent = 'Tidak dapat terhubung ke aplikasi lokal.';
-        document.getElementById('error-box').style.display = 'block';
-        document.getElementById('error-box').textContent = 'Pastikan aplikasi CKM Karoseri sedang berjalan, lalu coba login kembali.';
+        document.getElementById('title').textContent = 'Aplikasi Tidak Terdeteksi';
+        document.getElementById('status').textContent =
+          'Pastikan MLBB Highlight Uploader sedang berjalan, lalu coba login ulang.';
+
         const codeBox = document.getElementById('code-box');
         codeBox.style.display = 'block';
-        codeBox.textContent = 'Authorization Code: ' + code;
-        document.getElementById('note').style.display = 'block';
-        document.getElementById('note').textContent = 'Jika aplikasi tidak terbuka otomatis, salin kode di atas.';
-      }, 5000);
+        codeBox.textContent = code;
+        codeBox.dataset.code = code;
+
+        document.getElementById('copy-btn').style.display = 'inline-block';
+        document.getElementById('note').textContent =
+          'Atau salin authorization code di atas dan tempel ke aplikasi secara manual.';
+      }, 4000);
+
     } else {
-      document.getElementById('spinner').style.display = 'none';
-      document.getElementById('status').textContent = 'Parameter tidak ditemukan.';
-      document.getElementById('error-box').style.display = 'block';
-      document.getElementById('error-box').textContent = 'Tidak ada authorization code yang diterima dari TikTok.';
+      showError('Tidak ada authorization code yang diterima dari TikTok. Coba ulangi proses login.');
     }
   </script>
 </body>
