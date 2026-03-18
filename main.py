@@ -21,7 +21,7 @@ CLIENT_KEY    = "YOUR_CLIENT_KEY"      # From TikTok Developer Portal
 CLIENT_SECRET = "YOUR_CLIENT_SECRET"  # From TikTok Developer Portal
 
 # Must match exactly what you registered in TikTok Developer Portal
-REDIRECT_URI  = "https://fendnetwork.github.io/mlbb-uploader/callback.html"
+REDIRECT_URI  = "https://fendnetwork.github.io/mlbb-tools/callback.html"
 
 LOCAL_PORT    = 8765
 ACCOUNTS_FILE = "accounts.json"
